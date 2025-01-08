@@ -1,9 +1,29 @@
 import { ArrowLeft, MapPin, Phone } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const PropertyDetails = () => {
   const { id } = useParams();
+
+  // Mock images array - in production this would come from your API
+  const propertyImages = [
+    `https://source.unsplash.com/featured/?land,plot&${id}-1`,
+    `https://source.unsplash.com/featured/?land,plot&${id}-2`,
+    `https://source.unsplash.com/featured/?land,plot&${id}-3`,
+    `https://source.unsplash.com/featured/?land,plot&${id}-4`,
+  ];
   
   // This would typically come from an API, using the id to fetch the specific property
   const properties = [
@@ -98,12 +118,58 @@ const PropertyDetails = () => {
         </Link>
 
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-gray-200 h-[400px] rounded-lg relative">
-            <img
-              src={`https://source.unsplash.com/featured/?land,plot&${id}`}
-              alt={property.title}
-              className="w-full h-full object-cover rounded-lg"
-            />
+          <div className="space-y-4">
+            <Carousel className="w-full">
+              <CarouselContent>
+                {propertyImages.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <div className="relative h-[400px] cursor-pointer hover:opacity-90 transition-opacity rounded-lg overflow-hidden">
+                          <img
+                            src={image}
+                            alt={`${property.title} - Image ${index + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl">
+                        <img
+                          src={image}
+                          alt={`${property.title} - Image ${index + 1}`}
+                          className="w-full h-full object-contain"
+                        />
+                      </DialogContent>
+                    </Dialog>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+
+            <div className="grid grid-cols-4 gap-2">
+              {propertyImages.map((image, index) => (
+                <Dialog key={index}>
+                  <DialogTrigger asChild>
+                    <div className="relative h-20 cursor-pointer hover:opacity-90 transition-opacity rounded-lg overflow-hidden">
+                      <img
+                        src={image}
+                        alt={`${property.title} - Thumbnail ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl">
+                    <img
+                      src={image}
+                      alt={`${property.title} - Image ${index + 1}`}
+                      className="w-full h-full object-contain"
+                    />
+                  </DialogContent>
+                </Dialog>
+              ))}
+            </div>
           </div>
 
           <div className="space-y-6">
