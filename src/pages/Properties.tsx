@@ -1,27 +1,32 @@
 import { MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import PropertiesHero from "@/components/properties/PropertiesHero";
 
 const Properties = () => {
   const properties = [
     {
+      id: "0",
       title: "5000 sq ft Plot For Sale",
       location: "Shirazi Bodo-Kwale",
       price: "KES 2.5M",
       negotiable: true,
     },
     {
+      id: "1",
       title: "5000 sq ft Plot For Sale",
       location: "Chembe Kibabamshe- Watamu",
       price: "KES 2M",
       negotiable: true,
     },
     {
+      id: "2",
       title: "5000 sq ft Plot for sale",
       location: "Ibiza- Ukunda",
       price: "KES 900K",
       negotiable: true,
     },
     {
+      id: "3",
       title: "5000 sq ft Plot for sale",
       location: "Mwabungo- Ukunda",
       price: "KES 900K",
@@ -30,14 +35,16 @@ const Properties = () => {
   ];
 
   return (
-    <div className="pt-20 min-h-screen bg-secondary">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-primary mb-8">Available Properties</h1>
+    <div className="min-h-screen bg-secondary">
+      <PropertiesHero />
+      
+      <div className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-primary mb-8">Available Properties</h2>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {properties.map((property, index) => (
             <div
-              key={index}
+              key={property.id}
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-fade-in"
               style={{ animationDelay: `${index * 100}ms` }}
             >
@@ -66,7 +73,7 @@ const Properties = () => {
                     )}
                   </div>
                   <Link
-                    to={`/properties/${index}`}
+                    to={`/properties/${property.id}`}
                     className="text-accent hover:underline"
                   >
                     View Details
