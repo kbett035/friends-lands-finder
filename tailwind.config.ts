@@ -20,12 +20,12 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#2C5545",
+          DEFAULT: "#002D62", // Changed from #2C5545 to navy blue
           foreground: "#ffffff",
         },
         secondary: {
           DEFAULT: "#F5F0E9",
-          foreground: "#2C5545",
+          foreground: "#002D62", // Updated to match new primary color
         },
         accent: {
           DEFAULT: "#DAA520",
