@@ -10,6 +10,15 @@ const Properties = () => {
       location: "Shirazi Bodo-Kwale",
       price: "KES 2.5M",
       negotiable: true,
+      images: [
+        "/lovable-uploads/84c45698-93bf-49dd-8c42-e7852715ef63.png",
+        "/lovable-uploads/efdb139b-a2ca-4281-9c35-558e54c776de.png",
+        "/lovable-uploads/dd99613d-8ac5-442c-8c46-78dc92807bbc.png",
+        "/lovable-uploads/427c44cd-8af7-4a78-b624-3034aed7b658.png",
+        "/lovable-uploads/b30b4b4c-47e3-43de-82ca-cf331e364c95.png",
+        "/lovable-uploads/268bc45a-95f1-4901-b4d7-ab2e82952f19.png",
+        "/lovable-uploads/c924fb46-5ddf-4a7d-b763-dee6290384da.png"
+      ]
     },
     {
       id: "1",
@@ -50,7 +59,7 @@ const Properties = () => {
             >
               <div className="bg-gray-200 h-48 relative">
                 <img
-                  src={`https://source.unsplash.com/featured/?land,plot&${index}`}
+                  src={property.images?.[0] || `https://source.unsplash.com/featured/?land,plot&${index}`}
                   alt={property.title}
                   className="w-full h-full object-cover"
                 />
