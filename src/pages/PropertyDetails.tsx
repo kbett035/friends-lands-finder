@@ -17,7 +17,6 @@ import {
 const PropertyDetails = () => {
   const { id } = useParams();
 
-  // Mock data array - in production this would come from your API
   const properties = [
     {
       id: "0",
@@ -58,13 +57,11 @@ const PropertyDetails = () => {
         "Development Ready"
       ],
       images: [
-        "/lovable-uploads/84c45698-93bf-49dd-8c42-e7852715ef63.png",
-        "/lovable-uploads/efdb139b-a2ca-4281-9c35-558e54c776de.png",
-        "/lovable-uploads/dd99613d-8ac5-442c-8c46-78dc92807bbc.png",
-        "/lovable-uploads/427c44cd-8af7-4a78-b624-3034aed7b658.png",
-        "/lovable-uploads/b30b4b4c-47e3-43de-82ca-cf331e364c95.png",
-        "/lovable-uploads/268bc45a-95f1-4901-b4d7-ab2e82952f19.png",
-        "/lovable-uploads/c924fb46-5ddf-4a7d-b763-dee6290384da.png"
+        "/lovable-uploads/45f4e67f-0fbb-4b61-baeb-d855cdf62930.png",
+        "/lovable-uploads/ee94df89-daff-462c-a8f1-5af89717188b.png",
+        "/lovable-uploads/326e712c-24f6-4e86-aa33-73bcfc6899d0.png",
+        "/lovable-uploads/31c81e4b-87fa-4cc8-b711-1d2a443f188f.png",
+        "/lovable-uploads/3f6a9f1a-a49b-4466-9950-eead341f697b.png"
       ]
     },
     {

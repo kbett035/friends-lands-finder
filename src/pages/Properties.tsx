@@ -26,6 +26,13 @@ const Properties = () => {
       location: "Chembe Kibabamshe- Watamu",
       price: "KES 2M",
       negotiable: true,
+      images: [
+        "/lovable-uploads/45f4e67f-0fbb-4b61-baeb-d855cdf62930.png",
+        "/lovable-uploads/ee94df89-daff-462c-a8f1-5af89717188b.png",
+        "/lovable-uploads/326e712c-24f6-4e86-aa33-73bcfc6899d0.png",
+        "/lovable-uploads/31c81e4b-87fa-4cc8-b711-1d2a443f188f.png",
+        "/lovable-uploads/3f6a9f1a-a49b-4466-9950-eead341f697b.png"
+      ]
     },
     {
       id: "2",
