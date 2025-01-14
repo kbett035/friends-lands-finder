@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
-    <div className="relative min-h-screen bg-secondary">
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent">
+    <div 
+      className="relative min-h-screen bg-secondary"
+      style={{
+        backgroundImage: 'url("/lovable-uploads/45f4e67f-0fbb-4b61-baeb-d855cdf62930.png")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40">
         <div className="container mx-auto px-4 h-full flex items-center">
           <div className="max-w-2xl text-white">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
