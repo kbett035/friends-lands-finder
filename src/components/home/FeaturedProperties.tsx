@@ -1,8 +1,24 @@
 import { MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { useState } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const FeaturedProperties = () => {
+  const [selectedProperty, setSelectedProperty] = useState<any>(null);
+
   const properties = [
     {
       id: "0",
@@ -63,12 +79,18 @@ const FeaturedProperties = () => {
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-fade-in"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="bg-gray-200 h-48 relative">
+              <div 
+                className="bg-gray-200 h-48 relative cursor-pointer"
+                onClick={() => setSelectedProperty(property)}
+              >
                 <img
                   src={property.images?.[0] || `https://source.unsplash.com/featured/?land,plot&${index}`}
                   alt={property.title}
                   className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="text-white font-semibold">Quick View</span>
+                </div>
               </div>
               <div className="p-4">
                 <h3 className="font-semibold mb-2">{property.title}</h3>
@@ -106,6 +128,65 @@ const FeaturedProperties = () => {
           </Link>
         </div>
       </div>
+
+      <Dialog open={!!selectedProperty} onOpenChange={() => setSelectedProperty(null)}>
+        <DialogContent className="max-w-3xl">
+          {selectedProperty && (
+            <>
+              <DialogHeader>
+                <DialogTitle>{selectedProperty.title}</DialogTitle>
+              </DialogHeader>
+              <div className="mt-4">
+                {selectedProperty.images && selectedProperty.images.length > 0 ? (
+                  <Carousel className="w-full">
+                    <CarouselContent>
+                      {selectedProperty.images.map((image: string, index: number) => (
+                        <CarouselItem key={index}>
+                          <div className="h-[300px]">
+                            <img
+                              src={image}
+                              alt={`${selectedProperty.title} - Image ${index + 1}`}
+                              className="w-full h-full object-cover rounded-lg"
+                            />
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
+                ) : (
+                  <div className="h-[300px] bg-gray-200 rounded-lg flex items-center justify-center">
+                    <span className="text-gray-500">No images available</span>
+                  </div>
+                )}
+                <div className="mt-4 space-y-3">
+                  <div className="flex items-center text-gray-600">
+                    <MapPin size={16} className="mr-2" />
+                    <span>{selectedProperty.location}</span>
+                  </div>
+                  <div className="font-bold text-primary text-xl">
+                    {selectedProperty.price}
+                    {selectedProperty.negotiable && (
+                      <span className="text-sm font-normal text-gray-500 ml-2">
+                        -Negotiable
+                      </span>
+                    )}
+                  </div>
+                  <Link
+                    to={`/properties/${selectedProperty.id}`}
+                    className="inline-block w-full"
+                  >
+                    <Button className="w-full" variant="default">
+                      View Full Details
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
