@@ -1,5 +1,6 @@
 import { MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const FeaturedProperties = () => {
   const properties = [
@@ -96,6 +97,13 @@ const FeaturedProperties = () => {
               </div>
             </div>
           ))}
+        </div>
+        <div className="mt-12 text-center">
+          <Link to="/properties">
+            <Button variant="default" size="lg">
+              View More Properties
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
