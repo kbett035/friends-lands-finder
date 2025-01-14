@@ -80,16 +80,18 @@ const FeaturedProperties = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div 
-                className="bg-gray-200 h-48 relative cursor-pointer"
+                className="bg-gray-200 h-48 relative cursor-pointer group"
                 onClick={() => setSelectedProperty(property)}
               >
                 <img
                   src={property.images?.[0] || `https://source.unsplash.com/featured/?land,plot&${index}`}
                   alt={property.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="text-white font-semibold">Quick View</span>
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="text-white font-semibold px-4 py-2 rounded-full border-2 border-white/50 backdrop-blur-sm">
+                    Quick View
+                  </span>
                 </div>
               </div>
               <div className="p-4">
@@ -130,57 +132,72 @@ const FeaturedProperties = () => {
       </div>
 
       <Dialog open={!!selectedProperty} onOpenChange={() => setSelectedProperty(null)}>
-        <DialogContent className="max-w-3xl">
+        <DialogContent className="max-w-4xl">
           {selectedProperty && (
             <>
               <DialogHeader>
-                <DialogTitle>{selectedProperty.title}</DialogTitle>
+                <DialogTitle className="text-2xl font-bold text-primary">
+                  {selectedProperty.title}
+                </DialogTitle>
               </DialogHeader>
-              <div className="mt-4">
+              <div className="mt-6 space-y-6">
                 {selectedProperty.images && selectedProperty.images.length > 0 ? (
-                  <Carousel className="w-full">
-                    <CarouselContent>
-                      {selectedProperty.images.map((image: string, index: number) => (
-                        <CarouselItem key={index}>
-                          <div className="h-[300px]">
-                            <img
-                              src={image}
-                              alt={`${selectedProperty.title} - Image ${index + 1}`}
-                              className="w-full h-full object-cover rounded-lg"
-                            />
-                          </div>
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
-                  </Carousel>
+                  <div className="relative rounded-xl overflow-hidden">
+                    <Carousel className="w-full">
+                      <CarouselContent>
+                        {selectedProperty.images.map((image: string, index: number) => (
+                          <CarouselItem key={index}>
+                            <div className="h-[400px]">
+                              <img
+                                src={image}
+                                alt={`${selectedProperty.title} - Image ${index + 1}`}
+                                className="w-full h-full object-cover rounded-lg"
+                              />
+                            </div>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious className="left-2" />
+                      <CarouselNext className="right-2" />
+                    </Carousel>
+                    <div className="absolute bottom-4 right-4 bg-black/70 px-3 py-1 rounded-full text-white text-sm">
+                      {selectedProperty.images.length} photos
+                    </div>
+                  </div>
                 ) : (
-                  <div className="h-[300px] bg-gray-200 rounded-lg flex items-center justify-center">
+                  <div className="h-[400px] bg-gray-100 rounded-xl flex items-center justify-center">
                     <span className="text-gray-500">No images available</span>
                   </div>
                 )}
-                <div className="mt-4 space-y-3">
-                  <div className="flex items-center text-gray-600">
-                    <MapPin size={16} className="mr-2" />
-                    <span>{selectedProperty.location}</span>
+                <div className="grid gap-6 p-4 bg-secondary/30 rounded-xl">
+                  <div className="flex items-center text-gray-700">
+                    <MapPin size={20} className="mr-2 text-primary" />
+                    <span className="text-lg">{selectedProperty.location}</span>
                   </div>
-                  <div className="font-bold text-primary text-xl">
-                    {selectedProperty.price}
-                    {selectedProperty.negotiable && (
-                      <span className="text-sm font-normal text-gray-500 ml-2">
-                        -Negotiable
-                      </span>
-                    )}
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-sm text-gray-600 mb-1">Price</div>
+                      <div className="font-bold text-2xl text-primary">
+                        {selectedProperty.price}
+                        {selectedProperty.negotiable && (
+                          <span className="text-sm font-normal text-gray-500 ml-2">
+                            Negotiable
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <Link
+                      to={`/properties/${selectedProperty.id}`}
+                      className="inline-block"
+                    >
+                      <Button 
+                        size="lg"
+                        className="font-semibold"
+                      >
+                        View Full Details
+                      </Button>
+                    </Link>
                   </div>
-                  <Link
-                    to={`/properties/${selectedProperty.id}`}
-                    className="inline-block w-full"
-                  >
-                    <Button className="w-full" variant="default">
-                      View Full Details
-                    </Button>
-                  </Link>
                 </div>
               </div>
             </>
