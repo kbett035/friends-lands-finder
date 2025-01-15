@@ -1,4 +1,5 @@
 import { Calculator, FileText, Landmark } from "lucide-react";
+import ContactSection from "@/components/home/ContactSection";
 
 const BuildingFinancing = () => {
   return (
@@ -80,6 +81,8 @@ const BuildingFinancing = () => {
           </div>
         </div>
       </div>
+
+      <ContactSection />
     </div>
   );
 };

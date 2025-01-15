@@ -1,4 +1,5 @@
 import { Search, FileCheck, TrendingUp } from "lucide-react";
+import ContactSection from "@/components/home/ContactSection";
 
 const PropertyAcquisition = () => {
   return (
@@ -80,6 +81,8 @@ const PropertyAcquisition = () => {
           </div>
         </div>
       </div>
+
+      <ContactSection />
     </div>
   );
 };

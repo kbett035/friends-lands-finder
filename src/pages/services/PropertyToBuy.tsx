@@ -1,4 +1,5 @@
 import { Building, Search, PiggyBank } from "lucide-react";
+import ContactSection from "@/components/home/ContactSection";
 
 const PropertyToBuy = () => {
   return (
@@ -80,6 +81,8 @@ const PropertyToBuy = () => {
           </div>
         </div>
       </div>
+
+      <ContactSection />
     </div>
   );
 };

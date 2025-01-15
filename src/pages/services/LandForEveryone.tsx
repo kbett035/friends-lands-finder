@@ -1,4 +1,5 @@
 import { Users, Map, Shield } from "lucide-react";
+import ContactSection from "@/components/home/ContactSection";
 
 const LandForEveryone = () => {
   return (
@@ -80,6 +81,8 @@ const LandForEveryone = () => {
           </div>
         </div>
       </div>
+
+      <ContactSection />
     </div>
   );
 };

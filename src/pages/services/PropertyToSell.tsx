@@ -1,4 +1,5 @@
 import { Target, Camera, HandshakeIcon } from "lucide-react";
+import ContactSection from "@/components/home/ContactSection";
 
 const PropertyToSell = () => {
   return (
@@ -80,6 +81,8 @@ const PropertyToSell = () => {
           </div>
         </div>
       </div>
+
+      <ContactSection />
     </div>
   );
 };
