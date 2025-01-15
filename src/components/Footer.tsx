@@ -4,6 +4,34 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  // Recent properties data
+  const recentProperties = [
+    {
+      id: "0",
+      title: "5000 sq ft Plot For Sale",
+      location: "Shirazi Bodo-Kwale",
+      price: "KES 2.5M",
+    },
+    {
+      id: "1",
+      title: "5000 sq ft Plot For Sale",
+      location: "Chembe Kibabamshe- Watamu",
+      price: "KES 2M",
+    },
+    {
+      id: "2",
+      title: "5000 sq ft Plot for sale",
+      location: "Ibiza- Ukunda",
+      price: "KES 900K",
+    },
+    {
+      id: "3",
+      title: "5000 sq ft Plot for sale",
+      location: "Mwabungo- Ukunda",
+      price: "KES 900K",
+    },
+  ];
+
   return (
     <footer className="bg-primary text-white mt-16">
       <div className="container mx-auto px-4 py-12">
@@ -19,26 +47,18 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li>
-                <Link to="/" className="hover:text-accent transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/properties" className="hover:text-accent transition-colors">
-                  Properties
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:text-accent transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-accent transition-colors">
-                  Contact
-                </Link>
-              </li>
+              {recentProperties.map((property) => (
+                <li key={property.id}>
+                  <Link
+                    to={`/properties/${property.id}`}
+                    className="block hover:text-accent transition-colors"
+                  >
+                    <div className="text-sm font-medium">{property.title}</div>
+                    <div className="text-xs opacity-75">{property.location}</div>
+                    <div className="text-xs font-medium text-accent">{property.price}</div>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
