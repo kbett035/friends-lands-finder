@@ -50,7 +50,7 @@ const Navbar = () => {
     <nav className="bg-white shadow-md fixed w-full z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-2xl font-bold text-primary">
+          <Link to="/" className="text-xl md:text-2xl font-bold text-primary">
             Friends Properties
           </Link>
 
@@ -90,7 +90,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
+            className="md:hidden p-2"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -100,33 +100,35 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className="block py-2 text-gray-700 hover:text-primary"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-            
-            {/* Mobile Quick Links */}
-            <div className="mt-4 border-t pt-4">
-              <div className="font-medium text-gray-700 mb-2">Quick Links</div>
-              {recentProperties.map((property) => (
+          <div className="md:hidden pb-4 absolute top-16 left-0 right-0 bg-white shadow-lg">
+            <div className="container mx-auto px-4">
+              {navItems.map((item) => (
                 <Link
-                  key={property.id}
-                  to={`/properties/${property.id}`}
-                  className="block py-2"
+                  key={item.name}
+                  to={item.path}
+                  className="block py-3 text-gray-700 hover:text-primary border-b border-gray-100"
                   onClick={() => setIsOpen(false)}
                 >
-                  <div className="text-sm font-medium text-gray-700">{property.title}</div>
-                  <div className="text-xs text-gray-500">{property.location}</div>
-                  <div className="text-xs font-medium text-primary">{property.price}</div>
+                  {item.name}
                 </Link>
               ))}
+              
+              {/* Mobile Quick Links */}
+              <div className="mt-4">
+                <div className="font-medium text-gray-700 mb-2">Quick Links</div>
+                {recentProperties.map((property) => (
+                  <Link
+                    key={property.id}
+                    to={`/properties/${property.id}`}
+                    className="block py-3 border-b border-gray-100"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <div className="text-sm font-medium text-gray-700">{property.title}</div>
+                    <div className="text-xs text-gray-500">{property.location}</div>
+                    <div className="text-xs font-medium text-primary">{property.price}</div>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         )}

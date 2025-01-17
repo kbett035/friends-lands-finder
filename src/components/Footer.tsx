@@ -35,7 +35,7 @@ const Footer = () => {
   return (
     <footer className="bg-primary text-white mt-16">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <h3 className="text-xl font-bold mb-4">Friends Properties</h3>
             <p className="text-sm">
@@ -46,7 +46,7 @@ const Footer = () => {
           
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <ul className="space-y-4">
               {recentProperties.map((property) => (
                 <li key={property.id}>
                   <Link
@@ -64,7 +64,7 @@ const Footer = () => {
 
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-            <address className="not-italic space-y-2 text-sm">
+            <address className="not-italic space-y-3 text-sm">
               <p>Moi Avenue, Mombasa</p>
               <p>Mbooni Building 1st floor</p>
               <p>
@@ -88,7 +88,7 @@ const Footer = () => {
 
           <div>
             <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
-            <div className="flex space-x-4">
+            <div className="flex space-x-6">
               <a
                 href="#"
                 className="hover:text-accent transition-colors"

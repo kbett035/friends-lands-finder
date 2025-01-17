@@ -6,20 +6,20 @@ const ContactSection = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">Contact Us</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid gap-8 md:grid-cols-2">
             <div className="space-y-6">
               <div className="flex items-center">
-                <MapPinned className="w-6 h-6 text-primary mr-3" />
+                <MapPinned className="w-6 h-6 text-primary mr-3 flex-shrink-0" />
                 <span>Moi Avenue, Mombasa Mbooni Building 1st floor</span>
               </div>
               <div className="flex items-center">
-                <Mail className="w-6 h-6 text-primary mr-3" />
-                <a href="mailto:sales@friendspropertiesltd.com" className="hover:text-primary">
+                <Mail className="w-6 h-6 text-primary mr-3 flex-shrink-0" />
+                <a href="mailto:sales@friendspropertiesltd.com" className="hover:text-primary break-all">
                   sales@friendspropertiesltd.com
                 </a>
               </div>
               <div className="flex items-center">
-                <Phone className="w-6 h-6 text-primary mr-3" />
+                <Phone className="w-6 h-6 text-primary mr-3 flex-shrink-0" />
                 <a href="tel:+2547108835375" className="hover:text-primary">
                   +254 710 883 5375
                 </a>
